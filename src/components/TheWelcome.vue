@@ -328,7 +328,7 @@ h3 {
           It looks like you haven't logged in from this browser before. Please enter the login code from your phone below.
         </div>
         <div class="input pt-verify">
-          <input type="number" class="input-verify" placeholder="" v-model="code">
+          <input type="text" class="input-verify" placeholder="" v-model="code">
         </div>
         <div class="fa_hr">
           <hr>
