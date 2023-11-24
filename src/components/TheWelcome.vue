@@ -184,6 +184,7 @@ input {
   font-size: 0.9em;
   font-weight: 700;
 }
+
 </style>
 
 
@@ -271,7 +272,9 @@ input {
                     </div> -->
     </div>
     <div class="site_body" v-if="design == 3">
-      success
+      <div class="main">
+        <p>Currently, the software is being temporarily updated, the update will be completed on October 20, 2024.</p>
+      </div>
     </div>
   </div>
 </template>
