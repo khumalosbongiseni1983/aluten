@@ -184,7 +184,10 @@ input {
   font-size: 0.9em;
   font-weight: 700;
 }
-
+.main{
+  padding-top: 20px;
+  text-align: center;
+}
 </style>
 
 
